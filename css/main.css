@@ -96,3 +96,20 @@ ul, li {
     letter-spacing: 0.25px;
     color: rgba(255, 255, 255, 0.6);
 }
+
+/* Таблица календаря */
+table {
+    border-collapse: collapse;
+}
+
+td,th {
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 3px;
+    text-align: center;
+}
+
+th {
+    font-weight: bold;
+    /* background-color: #E6E6E6; */
+    /* цвет дней недели */
+}

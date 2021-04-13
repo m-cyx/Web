@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">  
     <link rel="stylesheet" href="css/main.css"> 
+    <script src="js/1lab.js"></script>
     
 </head>
 <body class="body">
@@ -34,15 +35,22 @@
         </header>
 
         <section class="main">
+
             <div class="work"> 
                 <div class="element">
+                    <h1>Текущая дата и время: </h1>
+                    <p id="timedisplay">
+                        <script>getDate();</script> 
+                    </p>
+                    <br>
+                    <p id="calendar">
+                        <script>createCalendar(calendar, 2021, 4);</script>
+                    </p>
                     
                 </div>
-                
-                    
                 </div>
-               
             </div>
+        
         </section>
     </div>
 </body>
