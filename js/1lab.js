@@ -71,4 +71,24 @@ function getDay(date) { // получить номер дня недели, от
     return day - 1;
 }
 
+
+// function blink(element, time) {
+//   element.style.visibility = "hidden";
+//   setTimeout(function () {
+//     element.style.visibility = "visible";
+//   }, time);
+//   setTimeout(function () {
+//     blink(element, time); // recurse
+//   }, time * 2);
+// }
+
+function blink() {
+  setTimeout(function () {
+      if (document.getElementById('blink').style.display === 'inline') {
+          document.getElementById('blink').style.display = "none";
+      } else {
+          document.getElementById('blink').style.display = "inline";
+      }
+  }, 500);
+}
   
