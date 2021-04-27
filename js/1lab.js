@@ -92,3 +92,14 @@ function blink() {
   }, 500);
 }
   
+
+
+addAnother = function() {
+  let text = prompt('Введите новый элемент', 111);
+  var ul = document.getElementById("list");
+  var li = document.createElement("li");
+  var children = ul.children.length + 1
+  li.setAttribute("id", "element"+children)
+  li.appendChild(document.createTextNode(text));
+  ul.appendChild(li)
+}
