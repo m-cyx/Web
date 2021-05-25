@@ -74,6 +74,110 @@
                     </p>
                 </div>
 
+                <div class="element"> 
+                    <h1>Упражнение 6</h1>
+                    <div id="field">
+                        <img src="img/sonic.gif" id="sonic">
+                      </div>
+                    
+                      <script>
+                        field.onclick = function(event) {
+                          let fieldCoords = this.getBoundingClientRect();
+                          let sonicCoords = {
+                            top: event.clientY - fieldCoords.top - field.clientTop - sonic.clientHeight / 2,
+                            left: event.clientX - fieldCoords.left - field.clientLeft - sonic.clientWidth / 2
+                          };
+                          if (sonicCoords.top < 0) sonicCoords.top = 0;
+                          if (sonicCoords.left < 0) sonicCoords.left = 0;                    
+                          if (sonicCoords.left + sonic.clientWidth > field.clientWidth) {
+                            sonicCoords.left = field.clientWidth - sonic.clientWidth;
+                          }
+                          if (sonicCoords.top + sonic.clientHeight > field.clientHeight) {
+                            sonicCoords.top = field.clientHeight - sonic.clientHeight;
+                          }
+                          sonic.style.left = sonicCoords.left + 'px';
+                          sonic.style.top = sonicCoords.top + 'px';
+                        }
+                      </script>
+
+                    
+                </div>
+
+                <div class="element">
+                    <h1>Упражнение 7</h1>
+
+                    <template id="tmpl">
+                        <style>
+                        
+                        ::slotted([slot="title"]) {
+                            font-family: Roboto;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 14px;
+                            margin: 0;
+                            line-height: 20px;
+                            letter-spacing: 0.25px;
+                            color: rgba(255, 255, 255, 0.6);
+                          cursor: pointer;
+                        }
+                      
+                        ::slotted([slot="title"])::before {
+                            content: '📂';
+                            font-family: Roboto;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 14px;
+                            margin: 0;
+                            line-height: 20px;
+                            letter-spacing: 0.25px;
+                            color: rgba(255, 255, 255, 0.6);
+                            font-size: 14px;
+                        }
+                      
+                        .closed ::slotted([slot="title"])::before {
+                            content: '📁';
+                            font-family: Roboto;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-size: 14px;
+                            margin: 0;
+                            line-height: 20px;
+                            letter-spacing: 0.25px;
+                            color: rgba(255, 255, 255, 0.6);
+                        }
+                      
+                        .closed ul {
+                          display: none;
+                        }
+                        </style>
+                      
+                        <div class="menu">
+                          <slot name="title"></slot>
+                          <ul><slot name="item"></slot></ul>
+                        </div>
+                      </template>
+                      
+                      <script>
+                      customElements.define('custom-menu', class extends HTMLElement {
+                        connectedCallback() {
+                          this.attachShadow({mode: 'open'});
+                          this.shadowRoot.append( tmpl.content.cloneNode(true) );
+                      
+                          this.shadowRoot.querySelector('slot[name="title"]').onclick = () => {
+                            this.shadowRoot.querySelector('.menu').classList.toggle('closed');
+                          };
+                        }
+                      });
+                      </script>
+                      
+                      <custom-menu>
+                        <span slot="title">Сладости</span>
+                        <li slot="item">Леденцы</li>
+                        <li slot="item">Фруктовые тосты</li>
+                        <li slot="item">Кексы</li>
+                      </custom-menu>
+                </div>
+
             </div>
         
         </section>
